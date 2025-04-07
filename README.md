@@ -5,8 +5,9 @@
 </div>
 
 # Overview
-The Grammar Scoring Engine for Voice Samples project focuses on evaluating the grammatical correctness of spoken sentences using machine learning techniques. The goal is to build a robust and automated system that can analyze voice inputs and assign grammar scores, helping improve spoken language proficiency—especially in educational or language learning settings.
-This engine leverages features extracted from voice samples—such as acoustic signals, speech-to-text conversions, and linguistic markers—to evaluate grammar quality. The application is particularly useful for learners, educators, and assessment platforms aiming to automate spoken grammar evaluation.
+This project focuses on predicting Mean Opinion Score (MOS) grammar ratings from spoken English audio samples using machine learning techniques. The goal is to build a robust and accurate system for scoring grammar quality (Likert scale: 0 to 5) based on features extracted from 45–60 second voice recordings.
+
+This system has applications in automated English proficiency tests, education tech platforms, and speech analytics for learners. Given the complexity of human speech, various features such as linguistic richness, fluency, and accuracy are indirectly captured through acoustic and language model embeddings.
 
 # 📁 File Contents
 
@@ -111,4 +112,4 @@ Pearson correlation score
 Diagnostic plots
 
 # Conclusion
-Model gave 90% accuracy for Medical Insurance Amount Prediction using XGBoost. This project demonstrates the effectiveness of machine learning, particularly XGBoost, in accurately predicting medical insurance costs based on key factors. It aims to enhance cost transparency and planning, benefiting both insurers and customers.
+The model achieved a **Pearson Correlation of ~0.44** on the validation set using XGBoost and other Models. This shows promising potential in scoring grammar objectively from speech. The pipeline can be extended using deep learning or ensemble techniques for further improvement.
