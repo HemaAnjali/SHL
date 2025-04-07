@@ -7,6 +7,19 @@
 # Overview
 The Grammar Scoring Engine for Voice Samples project focuses on evaluating the grammatical correctness of spoken sentences using machine learning techniques. The goal is to build a robust and automated system that can analyze voice inputs and assign grammar scores, helping improve spoken language proficiency—especially in educational or language learning settings.
 This engine leverages features extracted from voice samples—such as acoustic signals, speech-to-text conversions, and linguistic markers—to evaluate grammar quality. The application is particularly useful for learners, educators, and assessment platforms aiming to automate spoken grammar evaluation.
+
+# 📁 File Contents
+
+  • shl.ipynb – Main notebook containing:
+  
+  • Data import and exploration
+  
+  • Preprocessing steps
+  
+  • Model training and evaluation
+  
+  • Visualizations and result interpretations
+  
 # 📁Dataset Description
 The dataset consists of audio files and corresponding CSV metadata files.<br>
 •🔊 Audio Files
@@ -30,37 +43,69 @@ The dataset consists of audio files and corresponding CSV metadata files.<br>
   Training Samples: 444
 
   Testing Samples: 195
-# Some Screenshots
-
-• **A person who smoke and have BMI above 30 tends to have a higher medical cost** <br>
-
-![image](Images/photo_2025-02-27_10-26-00.jpg)
-
-• **A person who smoke and have BMI above 30 tends to have a higher medical cost** <br>
-
-![image](Images/photo_2025-02-27_10-26-00.jpg)
-
-• **Correlation Heatmap of Features and Target Variable (Charges)** <br>
-
-![image](Images/photo_2025-02-27_11-43-46.jpg)
 
 
-# Feature Importance
+# 🔍 1. Data Import and Exploration
+  • Libraries Imported:
+    
+  pandas, whisper (OpenAI), librosa, sentence-transformers, scikit-learn, xgboost, lightgbm, matplotlib, tqdm.
 
-• **Importance of individual features** <br>
-![image](Images/photo_2025-02-27_11-10-19.jpg)
+  • Whisper Model:
+    
+  The small variant of OpenAI's Whisper is used for automatic audio transcription
 
-• **Most important features for predicting of charges** <br>
-![image](Images/photo_2025-02-27_11-12-28.jpg)
+# 🧹 2. Preprocessing Steps
+  • Audio Transcription:
+  
+  Each audio file is transcribed to text using Whisper:
+  
+  Transcriptions are stored as a new column: train_df["transcript"]
 
+  • Text Embedding:
+  
+  Transcribed texts are converted to numerical vectors using Sentence-BERT
 
-# Model Evaluation
+# 🤖 3. Model Training and Evaluation
+  • Target Variable:
+  
+    y_train = train_df["label"].values (Likely regression, not classification)
+  
+  • Models Used:
+  
+    Ridge Regression
+  
+    XGBoost Regressor
+  
+    LightGBM Regressor
+  
+    Ensemble Method:
+    
+  A VotingRegressor combines all three
+    
+ • Evaluation Metric:
+ 
+  Pearson correlation coefficient is used to evaluate the predictions from cross-validation
+  
+# 📊 4. Visualizations and Result Interpretations
+• Scatter Plot:
 
-| Score | LinearRegression | Support Vector Machine | RandomForest | Gradient Boost| XGBoost|
-| ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| Train Accuracy | 0.729 | -0.105 | 0.97 | 0.868 |0.870 |
-| Test Accuracy | 0.806 | -0.134 | 0.882 | 0.901 | 0.904 |
-| CV Score | 0.747 | 0.103 | 0.836 | 0.860 | 0.860 |
+  A scatter plot is generated to compare predicted vs actual labels
+  
+• Interpretation:
+
+  High correlation indicates model effectiveness in capturing the target variable from transcribed speech.
+
+# 📁 Output Artifacts
+
+Transcribed text for each audio file
+
+Sentence embeddings
+
+Trained ensemble model (in memory)
+
+Pearson correlation score
+
+Diagnostic plots
 
 # Conclusion
 Model gave 90% accuracy for Medical Insurance Amount Prediction using XGBoost. This project demonstrates the effectiveness of machine learning, particularly XGBoost, in accurately predicting medical insurance costs based on key factors. It aims to enhance cost transparency and planning, benefiting both insurers and customers.
