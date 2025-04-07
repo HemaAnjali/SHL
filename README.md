@@ -90,6 +90,7 @@ The dataset consists of audio files and corresponding CSV metadata files.<br>
 • Scatter Plot:
 
   A scatter plot is generated to compare predicted vs actual labels
+  ![image](images/imagejpg)
   
 • Interpretation:
 
